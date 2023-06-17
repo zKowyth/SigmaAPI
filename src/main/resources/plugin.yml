@@ -1,0 +1,4 @@
+name: SigmaAPI
+version: '${project.version}'
+main: dev.mithril.sigmaapi.SigmaAPI
+api-version: 1.13
