@@ -20,6 +20,10 @@ public class SigmaItem implements Listener {
 
     private ClickListener listener;
 
+    public SigmaItem() {
+
+    }
+
     public SigmaItem(Material material) {
         itemStack = new ItemStack(material);
     }
