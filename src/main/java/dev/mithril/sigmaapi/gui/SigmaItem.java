@@ -50,8 +50,10 @@ public class SigmaItem implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         if (e.getCurrentItem() == null) return;
         if (e.getCurrentItem().equals(itemStack)) {
-            if (cancelClick) e.setCancelled(true);
-            if (listener != null) listener.clickEvent(e);
+            if (cancelClick) {
+                if (listener != null) listener.clickEvent(e);
+                e.setCancelled(true);
+            }
         }
     }
 
