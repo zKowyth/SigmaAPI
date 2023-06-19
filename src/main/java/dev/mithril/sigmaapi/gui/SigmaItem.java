@@ -1,11 +1,13 @@
 package dev.mithril.sigmaapi.gui;
 
+import dev.mithril.sigmaapi.SigmaAPI;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +44,27 @@ public class SigmaItem implements Listener {
         itemStack.setItemMeta(meta);
     }
 
+    public void whenClicked(ClickListener listener) {
+        this.listener = listener;
+        SigmaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, SigmaAPI.getPlugin());
+    }
+
+    @EventHandler
+    private void onClick(InventoryClickEvent e) {
+        if (e.getCurrentItem() == null || e.getCurrentItem().getType().equals(Material.AIR)) return;
+        if (!(e.getCurrentItem().equals(itemStack))) return;
+        listener.clickEvent(e);
+        if (cancelClick) e.setCancelled(true);
+    }
+
+    public void doNotCancel() {
+        cancelClick = false;
+    }
+
+    public ClickListener getListener() {
+        return listener;
+    }
+
     public ItemMeta getMeta() {
         return meta;
     }
@@ -49,28 +72,4 @@ public class SigmaItem implements Listener {
     public ItemStack getItemStack() {
         return itemStack;
     }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getCurrentItem() == null) return;
-        if (e.getCurrentItem().equals(itemStack)) {
-            if (cancelClick) {
-                if (listener != null) listener.clickEvent(e);
-                e.setCancelled(true);
-            }
-        }
-    }
-
-    public void doNotCancel() {
-        cancelClick = false;
-    }
-
-    public void whenClicked(ClickListener listener) {
-        this.listener = listener;
-    }
-
-    public ClickListener getListener() {
-        return listener;
-    }
-
 }
