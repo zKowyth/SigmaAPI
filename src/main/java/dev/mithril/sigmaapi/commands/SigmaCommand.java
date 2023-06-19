@@ -3,12 +3,10 @@ package dev.mithril.sigmaapi.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
-public abstract class CommandMaker extends Command implements PluginIdentifiableCommand {
+public abstract class SigmaCommand extends Command implements PluginIdentifiableCommand {
     CommandSender sender;
-    protected CommandMaker(String name) {
+    protected SigmaCommand(String name) {
         super(name);
     }
 

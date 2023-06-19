@@ -7,9 +7,15 @@ import org.bukkit.plugin.SimplePluginManager;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-public class CommandMakerManager {
+public class SigmaCommandManager {
 
-    public CommandMakerManager(Plugin plugin) {
+
+    /**
+     * Plugin should create new object of the class
+     * and use it
+     * @param plugin the plugin using the api
+     */
+    public SigmaCommandManager(Plugin plugin) {
         setupSimpleCommandMap(plugin);
     }
 
@@ -17,7 +23,7 @@ public class CommandMakerManager {
     private SimplePluginManager spm;
 
     // Use this in the onEnable() method to register commands
-    public void registerCommands(CommandMaker... commands) {
+    public void registerCommands(SigmaCommand... commands) {
         Arrays.stream(commands).forEach(command -> scm.register("mithril", command));
     }
 
