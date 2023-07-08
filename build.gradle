@@ -4,6 +4,7 @@
 
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 repositories {
@@ -32,7 +33,7 @@ dependencies {
 }
 
 group = 'com.github.zKowyth'
-version = '1.0.1'
+version = 'v1.0.0'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 def targetJavaVersion = 17
