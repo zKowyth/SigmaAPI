@@ -21,10 +21,6 @@ public class SigmaItem implements Listener {
 
     private ClickListener listener;
 
-    public SigmaItem() {
-
-    }
-
     public SigmaItem(Material material) {
         itemStack = new ItemStack(material);
     }
@@ -43,9 +39,10 @@ public class SigmaItem implements Listener {
         itemStack.setItemMeta(meta);
     }
 
-    public void whenClicked(ClickListener listener) {
+    public SigmaItem whenClicked(ClickListener listener) {
         this.listener = listener;
         SigmaAPI.getPlugin().getServer().getPluginManager().registerEvents(this, SigmaAPI.getPlugin());
+        return this;
     }
 
     @EventHandler
@@ -56,8 +53,9 @@ public class SigmaItem implements Listener {
         if (cancelClick) e.setCancelled(true);
     }
 
-    public void doNotCancel() {
+    public SigmaItem doNotCancel() {
         cancelClick = false;
+        return this;
     }
 
     public ClickListener getListener() {
