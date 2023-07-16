@@ -19,8 +19,14 @@ public class SigmaGUI {
     public void addItem(SigmaItem item) {
         inventory.addItem(item.getItemStack());
     }
-    public void setItem(int slot, SigmaItem item) {
+    public void setItem(SigmaItem item, int slot) {
         inventory.setItem(slot, item.getItemStack());
+    }
+    public void setItem(SigmaItem item, int... slots) {
+        for (int slot : slots) {
+            inventory.setItem(slot, item.getItemStack());
+        }
+
     }
     public ItemStack getItem(int slot) {
         return inventory.getItem(slot);
