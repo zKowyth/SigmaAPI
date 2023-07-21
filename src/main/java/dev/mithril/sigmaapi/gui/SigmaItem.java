@@ -24,16 +24,37 @@ public class SigmaItem implements Listener {
     public SigmaItem(Material material) {
         itemStack = new ItemStack(material);
     }
+    public SigmaItem(Material material, int customModelData) {
+        itemStack = new ItemStack(material);
+        meta = itemStack.getItemMeta();
+        meta.setCustomModelData(customModelData);
+        itemStack.setItemMeta(meta);
+    }
     public SigmaItem(Material material, String displayName) {
         itemStack = new ItemStack(material);
         meta = itemStack.getItemMeta();
         meta.setDisplayName(displayName);
         itemStack.setItemMeta(meta);
     }
+    public SigmaItem(Material material, String displayName, int customModelData) {
+        itemStack = new ItemStack(material);
+        meta = itemStack.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setCustomModelData(customModelData);
+        itemStack.setItemMeta(meta);
+    }
     public SigmaItem(Material material, String displayName, String... lore) {
         itemStack = new ItemStack(material);
         meta = itemStack.getItemMeta();
         meta.setDisplayName(displayName);
+        List<String> loreList = Arrays.asList(lore);
+        meta.setLore(loreList);
+        itemStack.setItemMeta(meta);
+    }public SigmaItem(Material material, String displayName, int customModelData, String... lore) {
+        itemStack = new ItemStack(material);
+        meta = itemStack.getItemMeta();
+        meta.setDisplayName(displayName);
+        meta.setCustomModelData(customModelData);
         List<String> loreList = Arrays.asList(lore);
         meta.setLore(loreList);
         itemStack.setItemMeta(meta);
