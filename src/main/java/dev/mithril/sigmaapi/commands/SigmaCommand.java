@@ -4,6 +4,7 @@ import dev.mithril.sigmaapi.SigmaAPI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
 import javax.annotation.Nonnull;
@@ -26,6 +27,10 @@ public abstract class SigmaCommand extends Command implements PluginIdentifiable
     @Override
     public @Nonnull Plugin getPlugin() {
         return SigmaAPI.getPlugin();
+    }
+
+    public FileConfiguration getConfig() {
+        return getPlugin().getConfig();
     }
 
     public void sendSenderMessage(String message) {
