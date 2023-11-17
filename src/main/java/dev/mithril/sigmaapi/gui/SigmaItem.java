@@ -13,7 +13,7 @@ import java.util.List;
 
 public class SigmaItem implements Listener {
 
-    private ItemStack itemStack;
+    private final ItemStack itemStack;
 
     private ItemMeta meta;
 

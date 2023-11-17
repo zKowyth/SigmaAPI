@@ -3,6 +3,8 @@ package dev.mithril.sigmaapi;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nonnull;
+
 public final class SigmaAPI extends JavaPlugin {
 
     private static Plugin plugin;
@@ -23,7 +25,7 @@ public final class SigmaAPI extends JavaPlugin {
      * To be put in the onEnable() of the plugin
      * @param plugin Plugin that uses the API
      */
-    public static void startSigmaAPI(Plugin plugin) {
+    public static void startSigmaAPI(@Nonnull Plugin plugin) {
         SigmaAPI.plugin = plugin;
     }
 
